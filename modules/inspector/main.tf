@@ -19,6 +19,6 @@ resource "aws_inspector_assessment_template" "template" {
   name               = "Assessment-SC-${terraform.workspace}"
   target_arn         = aws_inspector_assessment_target.target.arn
   duration           = 3600
-
   rules_package_arns = local.rules_package_arns
+  depends_on         = [aws_iam_service_linked_role.inspector]
 }
